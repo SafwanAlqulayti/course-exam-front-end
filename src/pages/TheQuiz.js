@@ -110,7 +110,7 @@ class TheQuiz extends Component {
         return (
             <div>
                 <h2>React Quiz</h2>
- 
+{/*  
         {/* <Quiz
           answer={this.state.answer}
           answerOptions={this.state.answerOptions}
@@ -118,7 +118,7 @@ class TheQuiz extends Component {
           question={this.state.question}
           questionTotal={quizQuestions.length}
           onAnswerSelected={this.handleAnswerSelected}
-        /> */}
+        /> */} 
         {this.state.result ? this.renderResult() : this.renderQuiz()}
 
             </div>

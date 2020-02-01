@@ -40,12 +40,15 @@ function App() {
           </li><li>
             <Link to="/addcourse">add new course</Link>
           </li>
+          <li>
+            <Link to="/quiz">take a quiz</Link>
+          </li>
         </ul>
-       <TheQuiz />
-          <Route exact path="/" component={Home} />
+           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <PrivateRoute path="/addcourse" component={AddCourse} />
+          <Route path="/quiz" component={TheQuiz} />
 
           <PrivateRoute path="/admin" component={Admin} />
         </div>
