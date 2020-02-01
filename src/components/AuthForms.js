@@ -22,7 +22,16 @@ const Input = styled.input`
   margin-bottom: 1rem;
   font-size: 0.8rem;
 `;
-
+const Select = styled.select`
+padding: 1rem;
+  border: 1px solid #999;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;`;
+  const Option = styled.option`
+  padding: 1rem;
+  border: 1px solid #999;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;`;
 const Button = styled.button`
   background: linear-gradient(to bottom, #6371c7, #5563c1);
   border-color: #3f4eae;
@@ -44,4 +53,4 @@ const Error = styled.div`
   background-color: red;
 `;
 
-export { Form, Input, Button, Logo, Card, Error };
+export { Form, Input, Button, Logo, Card, Error ,Select,Option };

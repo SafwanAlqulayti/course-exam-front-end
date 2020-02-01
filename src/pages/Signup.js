@@ -1,7 +1,7 @@
 import React ,{ useState } from "react";
 import { Link, Redirect } from "react-router-dom";
  import logoImg from "../img/logo.jpg";
-import { Card, Logo, Form, Input, Button } from '../components/AuthForms';
+import { Card, Logo, Form, Input, Button , Select,Option,Error } from '../components/AuthForms';
 import axios from 'axios';
 import { useAuth } from "../context/auth";
 
@@ -13,6 +13,8 @@ function Signup () {
     const [email, setEmail] = useState("");
 
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState();
+
     const { setAuthTokens } = useAuth();
 
      function  postSingUp   (){
@@ -24,6 +26,8 @@ function Signup () {
      }).then(result => {
         if (result.status === 200) {
           setAuthTokens(result.data);
+          console.log(result.data)
+
           setLoggedIn(true);
         } else {
           setIsError(true);
@@ -57,7 +61,7 @@ function Signup () {
           onChange={e => {
             setEmail(e.target.value);
           }}
-          placeholder="password" />
+          placeholder="email" />
         <Input  
         type="password"
           value={password}
@@ -65,9 +69,20 @@ function Signup () {
             setPassword(e.target.value);
           }}
           placeholder="password" />
+          <Select value={Option} >
+        <Option   type="role"
+          value="ss"
+         
+            />
+ 
+  
+        </Select>
+          
          
         <Button onClick={postSingUp}>Sign Up</Button>
       </Form>
+      { isError &&<Error>Sign up did not complete</Error> }
+
       <Link to="/login">Already have an account?</Link>
     </Card>
   );
