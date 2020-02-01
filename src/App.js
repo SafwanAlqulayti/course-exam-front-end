@@ -7,7 +7,7 @@ import { AuthContext } from "./context/auth";
 import Login from "./pages/Login";
 import Signup from './pages/Signup';
 import AddCourse from './pages/AddCourse';
-import Quiz from './pages/Quiz';
+import TheQuiz from './pages/TheQuiz';
 
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
             <Link to="/addcourse">add new course</Link>
           </li>
         </ul>
-       
+       <TheQuiz />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />

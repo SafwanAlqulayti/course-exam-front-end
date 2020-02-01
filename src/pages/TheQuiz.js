@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Quiz from './pages/Quiz';
-import quizQuestions from './api/quizQuestions';
-
+import Quiz from '../pages/Quiz';
+import quizQuestions from '../api/quizQuestions';
+import update from 'react-addons-update';
+ import QuizResult from '../components/QuizResult'
 
 class TheQuiz extends Component {
     constructor(props) {
@@ -53,27 +54,73 @@ class TheQuiz extends Component {
           answer: answer
         });
       }
+      setNextQuestion() {
+        const counter = this.state.counter + 1;
+        const questionId = this.state.questionId + 1;
+        this.setState({
+          counter: counter,
+          questionId: questionId,
+          question: quizQuestions[counter].question,
+          answerOptions: quizQuestions[counter].answers,
+          answer: ''
+        });
+      }
       handleAnswerSelected(event) {
         this.setUserAnswer(event.currentTarget.value);
         if (this.state.questionId < quizQuestions.length) {
             setTimeout(() => this.setNextQuestion(), 300);
           } else {
             // do nothing for now
+            setTimeout(() => this.setResults(this.getResults()), 300);
+
           }
+      }
+      getResults() {
+        const answersCount = this.state.answersCount;
+        const answersCountKeys = Object.keys(answersCount);
+        const answersCountValues = answersCountKeys.map((key) => answersCount[key]);
+        const maxAnswerCount = Math.max.apply(null, answersCountValues);
+        return answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
+      }
+      setResults (result) {
+        if (result.length === 1) {
+          this.setState({ result: result[0] });
+        } else {
+          this.setState({ result: 'Undetermined' });
+        }
+      }
+      renderQuiz() {
+        return (
+          <Quiz
+            answer={this.state.answer}
+            answerOptions={this.state.answerOptions}
+            questionId={this.state.questionId}
+            question={this.state.question}
+            questionTotal={quizQuestions.length}
+            onAnswerSelected={this.handleAnswerSelected}
+          />
+        );
+      }
+      renderResult() {
+        return (
+          <QuizResult quizResult={this.state.result} />
+         );
       }
     render() {
         return (
             <div>
                 <h2>React Quiz</h2>
  
-        <Quiz
+        {/* <Quiz
           answer={this.state.answer}
           answerOptions={this.state.answerOptions}
           questionId={this.state.questionId}
           question={this.state.question}
           questionTotal={quizQuestions.length}
           onAnswerSelected={this.handleAnswerSelected}
-        />
+        /> */}
+        {this.state.result ? this.renderResult() : this.renderQuiz()}
+
             </div>
         );
     }
