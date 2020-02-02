@@ -1,10 +1,10 @@
 import React ,{ useState } from "react";
 import { Link, Redirect } from "react-router-dom";
  import logoImg from "../img/logo.jpg";
-import { Card, Logo, Form, Input, Button , Select,Option,Error } from '../components/AuthForms';
+import { Card, Logo, Form, Button , Select,Option,Error } from '../components/AuthForms';
 import axios from 'axios';
 import { useAuth } from "../context/auth";
-
+import { Label , Input } from 'reactstrap';
 
 function Signup () {
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -13,7 +13,8 @@ function Signup () {
     const [email, setEmail] = useState("");
 
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState();
+ 
+    const [role, setRole] = useState("instructor");
 
     const { setAuthTokens } = useAuth();
 
@@ -21,13 +22,13 @@ function Signup () {
          axios.post('http://localhost:7000/users',{
         username: userName,
         email: email ,
-        password: password
+        password: password ,
+        role: role
         
      }).then(result => {
         if (result.status === 200) {
           setAuthTokens(result.data);
           console.log(result.data)
-
           setLoggedIn(true);
         } else {
           setIsError(true);
@@ -69,15 +70,13 @@ function Signup () {
             setPassword(e.target.value);
           }}
           placeholder="password" />
-          <Select value={Option} >
-        <Option   type="role"
-          value="ss"
-         
-            />
- 
-  
-        </Select>
-          
+         <Label for="exampleSelect">Select</Label>
+    <Input type="select" name="select" id="exampleSelect" onChange={e=>setRole(e.target.value)}  >
+
+     <option>instructor</option>
+     <option>user</option>
+
+    </Input>
          
         <Button onClick={postSingUp}>Sign Up</Button>
       </Form>
@@ -85,7 +84,9 @@ function Signup () {
 
       <Link to="/login">Already have an account?</Link>
     </Card>
-  );
+  );      
+
         }
 
 export default Signup ;
+

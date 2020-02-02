@@ -19,7 +19,7 @@ function Login() {
     }).then(result => {
       if (result.status === 200) {
         setAuthTokens(result.data.token);
-        console.log(result)
+        // console.log(result)
         setLoggedIn(true);
       } else {
         setIsError(true);
