@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Logo, Form, Input, Button, Error } from "../components/AuthForms";
 import axios from 'axios';
 import { Link, Redirect } from "react-router-dom";
+import jwt_decode from 'jwt-decode';
 
 
 function AddCourse(){
@@ -12,7 +13,10 @@ const [isError, setIsError] = useState(false);
 
 
 function postCourse(){
- axios.post('http://localhost:7000/courses',{
+  var x =localStorage.getItem("tokens")
+  const user =jwt_decode(x)
+  var id = user.user._id
+ axios.post(`http://localhost:7000/courses/${id}`,{
      name: courseName ,
      category: courseCategory
  }).then(result=>{
@@ -26,11 +30,11 @@ function postCourse(){
   });
 }
 if (courseAdded) {
-    return <Redirect to="/" />;
+    return <Redirect to="/myinfo" />;
   }
  
 return(
-    <Card>
+    <Card id="AddCourse">
       <Form>
         <Input
           type="courseName"

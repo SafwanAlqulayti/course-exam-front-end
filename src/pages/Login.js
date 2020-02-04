@@ -4,7 +4,7 @@ import axios from 'axios';
 import logoImg from "../img/logo.jpg";
 import { Card, Logo, Form, Input, Button, Error } from "../components/AuthForms";
 import { useAuth } from "../context/auth";
-
+import Student from '../pages/Student'
 function Login() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -30,11 +30,11 @@ function Login() {
   }
 
   if (isLoggedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="/Student" />;
   }
 
   return (
-    <Card>
+    <Card id="LoginCard">
       <Logo src={logoImg} />
       <Form>
         <Input

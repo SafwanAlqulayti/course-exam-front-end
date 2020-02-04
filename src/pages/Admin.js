@@ -7,11 +7,13 @@ function Admin(props) {
 
   function logOut() {
     setAuthTokens();
+    // localStorage.removeItem("token")
+    window.localStorage.clear();
   }
 
   return (
-    <div>
-      <div>Admin Page</div>
+    <div id="Admin">
+      <div>Log out Page</div>
       <Button onClick={logOut}>Log out</Button>
     </div>
   );

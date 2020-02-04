@@ -11,6 +11,7 @@ class AllCourses extends Component {
     componentDidMount(){
     axios.get("http://localhost:7000/courses")
     .then(res=>{
+        
       this.setState({arr:res.data})
     })}
     render() {

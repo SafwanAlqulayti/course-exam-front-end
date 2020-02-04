@@ -67,6 +67,23 @@ body {
 .answerOption {
   border-top: 1px solid #eee;
 }
+ #LoginCard{
+   margin-top: 200px;
+ }
+ #SignUpCard{
+  margin-top: 200px;
+}
+#Myinfo{
+  margin-top: 200px;
+
+}
+#AddCourse{
+  margin-top: 200px;
+}
+#Admin{
+  margin-top: 200px;
+
+}
 
 .answerOption:hover {
   background-color: #eefbfe;

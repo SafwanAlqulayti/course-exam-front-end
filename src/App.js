@@ -11,6 +11,10 @@ import TheQuiz from './pages/TheQuiz';
 import jwt_decode from 'jwt-decode';
 import MyInfo from './pages/MyInfo';
 import AllCourses from './pages/AllCourses';
+import Header from './components/Header';
+import Mycourses from './pages/Mycourses' ;
+import EditCourse from "./pages/editCourse";
+import Instructor from "./pages/Instructor";
 
 
 function App(props) {
@@ -22,15 +26,15 @@ function App(props) {
   // const [ userId , setUserId] = useState("");
   
   const setTokens = (data) => {
-  
+  console.log(data)
     if (data) {
       localStorage.setItem("tokens", JSON.stringify(data));
       setAuthTokens(data);
      const  x = localStorage.getItem('tokens') ;
      const user =jwt_decode(x)
-     var userID = user.user._id
-    //  setUserId(user.user._id)
-     console.log(x);
+   
+  
+     console.log(user);
     }
     else {
       console.log("no data ")
@@ -44,7 +48,7 @@ function App(props) {
     <AuthContext.Provider value = {{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/">Home Page</Link>
           </li>
@@ -60,21 +64,33 @@ function App(props) {
           <li>
             <Link to="/myinfo">info</Link>
           </li>
-        </ul>
-        {/* <MyInfo userInfo={props.useID}/> */}
-           <AllCourses/>
-           <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/myinfo" component={MyInfo} />
-
+        </ul> */}
+        {/* <MyInfo use rInfo={props.useID}/> */}
+<Header></Header>
+            <Route exact path="/" component={Home} />
+         <Route path="/login" component={Login} />
+            <Route path="/myinfo" component={MyInfo} />
+            <Route path="/thequiz" component={TheQuiz} />
           <Route path="/signup" component={Signup} />
-          <Route path="/quiz" component={TheQuiz} />
+          <Route path="/mycourses" component={Mycourses} />
+          <Route path="/addcourse" component={AddCourse} />
+          <Route path="/editcourse/:id" render={(props) => <EditCourse {...props}/>} />
+          
+          <Route path="/instructor" component={Instructor} />
+ 
 
-          <PrivateRoute path="/admin" component={Admin} />
+
+
+             {/* <Route path="/quiz" component={TheQuiz} /> 
+ */}  
+          < Route path="/admin" component={Admin} /> 
+          {/* <PrivateRoute path="/admin" component={Admin} />  */}
+
         </div>
       </Router>
     </AuthContext.Provider>
   );
+        
 }
 
 export default App;

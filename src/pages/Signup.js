@@ -5,7 +5,7 @@ import { Card, Logo, Form, Button , Select,Option,Error } from '../components/Au
 import axios from 'axios';
 import { useAuth } from "../context/auth";
 import { Label , Input } from 'reactstrap';
-
+ 
 function Signup () {
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -26,11 +26,12 @@ function Signup () {
         role: role
         
      }).then(result => {
-        if (result.status === 200) {
+        if (result.status === 200) {  
+          result.preventDefault()
           setAuthTokens(result.data);
           console.log(result.data)
           setLoggedIn(true);
-        } else {
+         } else {
           setIsError(true);
         }
       }).catch(e => {
@@ -39,13 +40,13 @@ function Signup () {
     }
   
     if (isLoggedIn) {
-      return <Redirect to="/" />;
+      return <Redirect to="/login" />;
     }
   
     
   
   return (
-    <Card>
+    <Card id="SignUpCard">
       <Logo src={logoImg} />
       <Form>
         <Input 
