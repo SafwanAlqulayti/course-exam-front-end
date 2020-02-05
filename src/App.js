@@ -10,11 +10,12 @@ import AddCourse from './pages/AddCourse';
 import TheQuiz from './pages/TheQuiz';
 import jwt_decode from 'jwt-decode';
 import MyInfo from './pages/MyInfo';
-import AllCourses from './pages/AllCourses';
-import Header from './components/Header';
+ import Header from './components/Header';
 import Mycourses from './pages/Mycourses' ;
 import EditCourse from "./pages/editCourse";
 import Instructor from "./pages/Instructor";
+import EditInfo from "./pages/EditInfo";
+import OneInstructor from './pages/OneInstructor';
 
 
 function App(props) {
@@ -74,15 +75,19 @@ function App(props) {
           <Route path="/signup" component={Signup} />
           <Route path="/mycourses" component={Mycourses} />
           <Route path="/addcourse" component={AddCourse} />
+          {/* <Route path="/addcourse/" render={(props) => <EditCourse {...props}/>} /> */}
+
           <Route path="/editcourse/:id" render={(props) => <EditCourse {...props}/>} />
-          
+          <Route path="/oneinstructor/:id" render={(props) => <OneInstructor {...props}/>} />
+
           <Route path="/instructor" component={Instructor} />
- 
+  
 
 
 
              {/* <Route path="/quiz" component={TheQuiz} /> 
  */}  
+ < Route path="/editinfo" component={EditInfo} /> 
           < Route path="/admin" component={Admin} /> 
           {/* <PrivateRoute path="/admin" component={Admin} />  */}
 

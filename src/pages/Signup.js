@@ -23,7 +23,8 @@ function Signup () {
         username: userName,
         email: email ,
         password: password ,
-        role: role
+        role: role,
+        isLoggedIn : false
         
      }).then(result => {
         if (result.status === 200) {  
@@ -81,7 +82,7 @@ function Signup () {
          
         <Button onClick={postSingUp}>Sign Up</Button>
       </Form>
-      { isError &&<Error>Sign up did not complete</Error> }
+      {/* { isError &&<Error>Sign up did not complete</Error> } */}
 
       <Link to="/login">Already have an account?</Link>
     </Card>

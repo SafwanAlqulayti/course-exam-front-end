@@ -30,7 +30,7 @@ function Login() {
   }
 
   if (isLoggedIn) {
-    return <Redirect to="/Student" />;
+    return <Redirect to="/" />;
   }
 
   return (

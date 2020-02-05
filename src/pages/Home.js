@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import InstructorInfo from "../components/InstructorInfo";
+import Price from "../components/price";
+import About from "./About";
 
 function Home(props) {
   return <div>
@@ -26,6 +28,10 @@ function Home(props) {
 	</div>
 </section>
 <InstructorInfo />
+<About></About>
+<Price/>
+
+<Footer></Footer>
 
  {/* //ddd */}
  

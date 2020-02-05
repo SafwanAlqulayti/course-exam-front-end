@@ -1,22 +1,79 @@
 import React, { Component } from 'react';
+import jwt_decode from 'jwt-decode';
+import { BrowserRouter as Router, Link,Redirect, Route  , withRouter} from "react-router-dom";
+import axios from 'axios';
 
 class Student extends Component {
+    constructor(){
+        super()
+        this.state = {
+            StudentCourses: []
+        }
+
+    }
+     
+   componentDidMount(){
+    const  x = localStorage.getItem('tokens') ;
+    const user =jwt_decode(x)
+    const id = user.user._id
+  
+       console.log(this.state.id)
+axios.get(`http://localhost:7000/users/${id}`)
+.then(res=>{
+     
+console.log(res.data.courses)  
+this.setState({
+    StudentCourses:  res.data.courses
+})  
+})
+  
+    }
     render() {
         return (
             <div>
-                
-                <h1>Student</h1>
-                <p>If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. Choose the number of random paragraphs you'd like to see and click the button. Your chosen number of paragraphs will instantly appear.
+ <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('thequiz')}}>Take quiz</button>
 
-While it may not be obvious to everyone, there a
-re a number of reasons creating random paragraphs can be useful. A few examples of
- how some people use this generator are listed in the following paragraphs.</p>
-               <h2> {this.props.name}</h2>
-               <p>{this.props.courses}</p>
+                <h1>My courses</h1>
+                
+               {/* <h2> {this.props.name}</h2>
+               <p>{this.props.courses}</p> */}
+               <table class="table    ">
+              
+  <thead className="thead-dark ">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Category</th>
+   
+
+    </tr>
+  </thead>
+  { 
+  this.state.StudentCourses.map((element , i)=>
+ 
+  <tr>
+ <th scope="row">{i+1}</th>
+ <td>{element.name}</td>
+
+
+  <td>{element.category}</td>
+ 
+ 
+   </tr>
+  )}
+  
+      
+ 
+
+  <tbody>
+  
+   
+  </tbody>
+</table>
 
             </div>
         );
     }
 }
 
-export default Student;
+export default withRouter(Student);

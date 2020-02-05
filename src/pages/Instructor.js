@@ -5,7 +5,7 @@ import editCourse from '../pages/editCourse';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { thisExpression } from '@babel/types';
-
+ 
 
 
 class Instructor extends Component {
@@ -59,17 +59,22 @@ addCourse=()=>{
         return (
             <Router>
             <div>
-                <nav><ul><li>
+                {/* <nav><ul><li>
             <Link to="/addcourse" >add new course</Link>
             <a onClick={this.addCourse}></a>
           </li>
-          </ul></nav>
-                <h1>Instructor</h1>
+          </ul>
+          
+          </nav> */}
+          <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('addcourse')}}>Add Course</button>
+          <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('editinfo')}}>Edit profile </button>
+
+                <h1>My courses</h1>
              
 
-            <table class="table">
+            <table className="table table-hover table-striped">
               
-  <thead>
+  <thead className="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Course Name</th>
@@ -82,15 +87,15 @@ addCourse=()=>{
   { 
   this.state.arr.map((element , i)=>
  
-  <tr>
- <th scope="row">{i+1}</th>
+  <tr >
+ <th scope="row" >{i+1}</th>
   <td>{element.name}</td>
   <td>{element.category}</td>
   <td hidden >{element._id}</td>
 
-  <td ><button   onClick={()=>this.deleteCourse(element._id)  }>Delete</button></td>
+  <td ><button type="button" class="btn btn-danger"  onClick={()=>this.deleteCourse(element._id)  }>Delete</button></td>
   {/* <td ><button   onClick={this.editCourse(element._id)}>Edit</button></td> */}
-  <td ><button   onClick={()=>{ this.props.history.push(`/editcourse/${element._id}`)}}>Edit</button></td>
+  <td ><button  type="button" class="btn btn-success" onClick={()=>{ this.props.history.push(`/editcourse/${element._id}`)}}>Edit</button></td>
 {/* 
   <td ><Link to="/editcourse" >edit new course</Link>
 </td> */}
@@ -113,9 +118,9 @@ addCourse=()=>{
   </tbody>
 </table>
             </div>
-            <Route path="/editcourse" ><editCourse ></editCourse></Route>
+            {/* <Route path="/editcourse" ><editCourse ></editCourse></Route>
 
-            <Route path="/addcourse" component={AddCourse} />
+            <Route path="/addcourse" component={AddCourse} /> */}
             </Router>
         );
     }

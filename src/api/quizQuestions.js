@@ -1,86 +1,86 @@
 var quizQuestions = [
     {
-        question: "What franchise would you rather play a game from?",
+        question: "Which one is a front end languge?",
         answers: [
             {
-                type: "Microsoft",
-                content: "Halo"
+                type: "web development",
+                content: "css"
             },
             {
-                type: "Nintendo",
-                content: "Pokemon"
+                type: "back end",
+                content: "java"
             },
             {
-                type: "Sony",
-                content: "Uncharted"
+                type: "mobile development",
+                content: "swift"
             }
         ]
     },
     {
-        question: "Which console would you prefer to play with friends?",
+        question: "Which one is a backend programing language?",
         answers: [
             {
                 type: "Microsoft",
-                content: "X-Box"
+                content: "css"
             },
             {
                 type: "Nintendo",
-                content: "Nintendo 64"
+                content: "html"
             },
             {
                 type: "Sony",
-                content: "Playstation 1"
+                content: "ruby"
             }
         ]
     },
     {
-        question: "Which of these racing franchises would you prefer to play a game from?",
+        question: "Which of these is a javascript framework?",
         answers: [
             {
-                type: "Microsoft",
-                content: "Forza"
+                type: "web dev",
+                content: "React"
             },
             {
-                type: "Nintendo",
-                content: "Mario Kart"
+                type: "web devv",
+                content: "Angular"
             },
             {
-                type: "Sony",
-                content: "Gran Turismo"
+                type: "web devvv",
+                content: "Rails"
             }
         ]
     },
     {
-        question: "Which of these games do you think is best?",
+        question: "Which of these is a loop?",
         answers: [
             {
-                type: "Microsoft",
-                content: "BioShock"
+                type: "web dev",
+                content: "For each"
             },
             {
-                type: "Nintendo",
-                content: "The Legend of Zelda: Ocarina of Time"
+                type: "web devv",
+                content: "for"
             },
             {
-                type: "Sony",
-                content: "Final Fantasy VII"
+                type: "web devvv",
+                content: "both"
             }
         ]
     },
     {
-        question: "What console would you prefer to own?",
+        question: "Which one of these is a code editor?",
         answers: [
             {
-                type: "Microsoft",
-                content: "X-Box One"
+                type: "Miweb dev",
+                content: "Atom"
             },
             {
-                type: "Nintendo",
-                content: "Wii U"
+                type: "web devv",
+                content: "Mysql"
             },
             {
-                type: "Sony",
-                content: "Playstation 4"
+                type: "web devvv",
+                content: "Python"
             }
         ]
     }

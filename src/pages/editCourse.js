@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Card, Logo, Form, Input, Button, Error } from "../components/AuthForms";
+import { Link, Redirect } from "react-router-dom";
 
 
 class editCourse extends Component {
@@ -8,7 +9,8 @@ class editCourse extends Component {
         super()
         this.state = {
             name : '',
-            category: ''
+            category: '' ,
+            edited: false
         }
     }
     editCourse(){
@@ -18,8 +20,16 @@ class editCourse extends Component {
     .then(res=>{
     console.log(res)
     console.log(this.state.name )
+    this.setState({
+        edited: true
+        
     })
+    this.chechEdited()
+    })
+   
     }
+
+  
     // editName(e){
     //     this.setState({
     //         name: e.target.value
@@ -45,7 +55,14 @@ class editCourse extends Component {
             category: e.target.value
         })
         console.log(this.state.name)
-    }
+    } 
+    chechEdited(){
+        if(this.state.edited){
+            return <Redirect to="/myinfo" />
+          }
+        }
+
+    
     render() {
        
 const name = ""
@@ -63,10 +80,11 @@ const name = ""
           type="courseCategory"
         //   value={category}
           onChange={this.handleChangeCategory}
-            
+          placeholder="Course Category"
+
           
          />
-        <Button onClick={this.editCourse()}>Add course</Button>
+        <Button onClick={this.editCourse()}>Update course</Button>
       </Form>
       {console.log(this.props.id)}
         <p>{this.props.id}</p>

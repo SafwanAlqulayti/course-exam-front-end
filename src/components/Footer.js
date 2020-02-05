@@ -40,7 +40,8 @@ class Footer extends Component {
     <div class="row">
       <div class="col-md-6 align-self-center">
         <div class="copyright-text">
-          <p><a href="#">Eventre</a> &#169; 2017 All Right Reserved</p>
+          <p><a href="#">Easy learn
+</a> &#169; 2017 All Right Reserved</p>
         </div>
       </div>
       <div class="col-md-6">

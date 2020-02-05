@@ -13,12 +13,15 @@ class MyInfo extends Component {
             username: '', 
             userRole : "" ,
             courses: [] ,
-            check: true
+        
+                Loged:"",
+            secondState: ""
+
         }
     }
     
     UNSAFE_componentWillMount() {
-        if(localStorage.getItem('tokens')){
+  
           
         const  x = localStorage.getItem('tokens') ;
         console.log(x)
@@ -31,62 +34,28 @@ class MyInfo extends Component {
    if (user.user.role === "instructor" ){
        console.log("in if")
      this.setState({
-        check  : true
+        Loged  : <Instructor></Instructor>
     }) } else {
         console.log("in else")
-        this.setState({check : false })
+        this.setState({Loged : <Student></Student> })
     }
 
-console.log("sssssssss")
-console.log(user.user.role)
 
-  this.setState({
-    ID: user.user._id ,
-    username: user.user.username ,
-    courses:  user.user.courses
-
-  }) 
 } 
-// if(this.state.check === "instructor"){
-//     return <Redirect to="/instructor" />
-// }
 
-    }
-//    var name = user.user.username
-//    var courses
-//          this.setState({
-//              userID: ID
-//          })
-//          axios.get(`http://localhost:7000/users/${ID}`)
-//          .then(res=>{
-
-//              console.log(res.data)
-//           this.setState({
-              
-//            username:  res.data.username ,
-//            coursers: res.data.courses
-//           }) 
-//          })
-//         }
-//         else{
-//                console.log("the token is expired")
-//            }
-//            }
     render() {
-        // this.check()
-        console.log(this.state.check);
+     
+   
+    
+        
         return (
          
-            <div id="Myinfo">
-   
          
-     {  this.state.check  ?   <Instructor></Instructor> :
-               <Student></Student>
-        }
+            <div class="modify">
+  
+        {this.state.Loged}
               
-              {/* name={this.state.username} courses={this.state.courses} */}
-               
-               {/* <h2> {this.state.username}</h2> */}
+           
     
             </div>
         );

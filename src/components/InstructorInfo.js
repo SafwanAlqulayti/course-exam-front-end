@@ -1,33 +1,61 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Link,Redirect, Route  , withRouter} from "react-router-dom";
+import jwt_decode from 'jwt-decode';
+
 import axios from 'axios';
 
 class InstructorInfo extends Component {
+	constructor(){
+		super()
+		this.state = {
+			arr: [] ,
+			checkRole: ""
+		}
+	}
 	componentDidMount(){
 		axios.get('http://localhost:7000/users/')
 		.then((res)=>{
-			console.log(res)
+			console.log(res.data)
 			console.log("instrucot info ")
+			this.setState({
+				arr: res.data
+			})
 		})
-	}
+		if(localStorage.getItem('tokens')){
+		const  x = localStorage.getItem('tokens') ;
+        console.log(x)
+   const user =jwt_decode(x)
+   console.log(user.user.role)
+   this.setState({
+    checkRole : user.user.role
+   })
+}
+  
+
+}
+	 
     render() {
         return (
             <div>
-                
+             
+
+			
 <section class="section speakers white">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
  				<div class="section-title">
 					<h3>Who <span class="alternate">Teaching?</span></h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusm tempor incididunt ut labore</p>
+					<p>Our great Instructors</p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
+		{this.state.arr.map((elemnt , key)=>
 			<div class="col-lg-3 col-md-4 col-sm-6">
  				<div class="speaker-item">
 					<div class="image">
-						<img src="images/speakers/speaker-one.jpg" alt="speaker" class="img-fluid"></img>
+						<img src={elemnt.img} alt="speaker" class="img-fluid"></img>
 						<div class="primary-overlay"></div>
 						<div class="socials">
 							<ul class="list-inline">
@@ -39,151 +67,17 @@ class InstructorInfo extends Component {
 						</div>
 					</div>
 					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
+						<h5><a href="single-speaker.html">{elemnt.username}</a></h5>
+						{this.state.checkRole === "user" ?
+						<button type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push(`/oneinstructor/${elemnt._id}`)}}>See my courses</button>
+						:console.log("test")
+						}
+						<p>{elemnt.teaching}</p>
 					</div>
 				</div>
 			</div>
+		)}
 			
-			{/* <div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-two.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-three.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-four.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-five.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-six.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-five.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
- 					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
- 				<div class="speaker-item">
-					<div class="image">
-						<img src="images/speakers/speaker-six.jpg" alt="speaker" class="img-fluid"></img>
-						<div class="primary-overlay"></div>
-						<div class="socials">
-							<ul class="list-inline">
-								<li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="content text-center">
-						<h5><a href="single-speaker.html">Johnathan Franco</a></h5>
-						<p>Project Manager</p>
-					</div>
-				</div>
-			</div> */}
 			
 		</div>
 	</div>
@@ -193,4 +87,4 @@ class InstructorInfo extends Component {
     }
 }
 
-export default InstructorInfo;
+export default withRouter(InstructorInfo);
