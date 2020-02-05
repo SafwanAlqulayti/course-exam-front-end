@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Course site
-The web app idea is to provide a platform to the user to learn new things or add their own material.
+The web app idea is to provide a platform to the user to learn new things or add their own materials.
 ### Use npm install to run the code after cloning
 
  
