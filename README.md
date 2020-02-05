@@ -8,6 +8,8 @@ The web app idea is to provide a platform to the user to learn new things or add
 ### Technologies Used
 
 React framework ,Bootstrab ,mongo db ,Axios
+### Wireframe 
+![New Wireframe 3](https://user-images.githubusercontent.com/57276846/73876696-7b42de80-4868-11ea-9f79-d36b5884b27b.png)
 
 ### User 
 
