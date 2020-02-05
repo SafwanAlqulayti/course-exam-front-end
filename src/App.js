@@ -42,7 +42,7 @@ function App(props) {
     }
    
   }
-  const path = "http://course-exam-front-end.github.io/"
+  const path = "http://course-exam-front-end/"
 
  
   return (
