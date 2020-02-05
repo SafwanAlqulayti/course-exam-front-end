@@ -1,21 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Use npm install to run the code after cloning
+## Course site
+The web app idea is to display the avileble courses to the user and make the user aple to join the courses after he sign up.
+Also there is an opthion to sign up as instructror to add all your courses and make avileble to the user .
 
 
-### app
+### Use npm install to run the code after cloning
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ .
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### technologies used
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+React framework ,Bootstrab ,mongo db ,Axios
 ### `yarn build`
 
 Builds the app for production to the `build` folder.<br />
