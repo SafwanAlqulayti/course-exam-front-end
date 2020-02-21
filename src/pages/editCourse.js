@@ -12,22 +12,33 @@ class editCourse extends Component {
             category: '' ,
             edited: false
         }
+        this.edited =this.edited.bind(this)
     }
+ 
     editCourse(){
         axios.put(`http://localhost:7000/courses/${this.props.match.params.id}`,
         {name: this.state.name ,category: this.state.category })
     
-    .then(res=>{
+    .then(   res=>{
     console.log(res)
     console.log(this.state.name )
-    this.setState({
-        edited: true
-        
-    })
-    this.chechEdited()
-    })
+       if(res.status === 200){
+           this.setState({
+               edited : true
+           })
+          this.edited()
+     }
+    
+     })
    
     }
+    edited(){
+        if(this.state.edited){
+        return  window.location.href="/myinfo"
+        }
+    }
+  
+    
 
   
     // editName(e){
@@ -56,11 +67,7 @@ class editCourse extends Component {
         })
         console.log(this.state.name)
     } 
-    chechEdited(){
-        if(this.state.edited){
-            return <Redirect to="/myinfo" />
-          }
-        }
+ 
 
     
     render() {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Instructor from './Instructor';
 import Student from './Student';
 import {   Redirect } from "react-router-dom";
-
+import Footer from "../components/Footer"
 class MyInfo extends Component {
     constructor(){
         super()
@@ -55,8 +55,7 @@ class MyInfo extends Component {
   
         {this.state.Loged}
               
-           
-    
+     
             </div>
         );
     }

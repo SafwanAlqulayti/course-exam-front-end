@@ -32,6 +32,8 @@ function Signup () {
           setAuthTokens(result.data);
           console.log(result.data)
           setLoggedIn(true);
+          this.props.history.push('/login')
+
          } else {
           setIsError(true);
         }
@@ -40,9 +42,9 @@ function Signup () {
       });
     }
   
-    if (isLoggedIn) {
-      return <Redirect to="/login" />;
-    }
+    // if (isLoggedIn) {
+    //   return <Redirect to="/login" />;
+    // }
   
     
   

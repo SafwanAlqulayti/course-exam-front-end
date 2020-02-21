@@ -17,8 +17,10 @@ class InstructorInfo extends Component {
 		.then((res)=>{
 			console.log(res.data)
 			console.log("instrucot info ")
+			const s = res.data.filter(x=> x.role ==="instructor")
+			console.log(s)
 			this.setState({
-				arr: res.data
+				arr: s
 			})
 		})
 		if(localStorage.getItem('tokens')){
@@ -55,7 +57,7 @@ class InstructorInfo extends Component {
 			<div class="col-lg-3 col-md-4 col-sm-6">
  				<div class="speaker-item">
 					<div class="image">
-						<img src={elemnt.img} alt="speaker" class="img-fluid"></img>
+						<img src={elemnt.img} alt="Instructor" class="img-fluid"></img>
 						<div class="primary-overlay"></div>
 						<div class="socials">
 							<ul class="list-inline">
@@ -68,11 +70,12 @@ class InstructorInfo extends Component {
 					</div>
 					<div class="content text-center">
 						<h5><a href="single-speaker.html">{elemnt.username}</a></h5>
+						<span>{elemnt.major}</span><br></br>
 						{this.state.checkRole === "user" ?
 						<button type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push(`/oneinstructor/${elemnt._id}`)}}>See my courses</button>
 						:console.log("test")
 						}
-						<p>{elemnt.teaching}</p>
+					 
 					</div>
 				</div>
 			</div>

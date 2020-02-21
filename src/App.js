@@ -1,5 +1,5 @@
 import React ,{ useState, useEffect }from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
@@ -16,6 +16,7 @@ import EditCourse from "./pages/editCourse";
 import Instructor from "./pages/Instructor";
 import EditInfo from "./pages/EditInfo";
 import OneInstructor from './pages/OneInstructor';
+import Image from './components/Image';
 
 
 function App(props) {
@@ -42,11 +43,11 @@ function App(props) {
     }
    
   }
-  const path = "http://course-exam-front-end/"
-
+ 
  
   return (
     //check the user token
+    
     <AuthContext.Provider value = {{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
@@ -69,11 +70,13 @@ function App(props) {
         </ul> */}
         {/* <MyInfo use rInfo={props.useID}/> */}
 <Header></Header>
-            <Route exact path={path + "/"}   component={Home} />
-         <Route path={path+"/login"} component={Login} />
+            <Route exact path=  "/"   component={Home} />
+         <Route path= "/login" component={Login} />
             <Route path="/myinfo" component={MyInfo} />
             <Route path="/thequiz" component={TheQuiz} />
           <Route path="/signup" component={Signup} />
+          <Route path="/image" component={Image} />
+
           <Route path="/mycourses" component={Mycourses} />
           <Route path="/addcourse" component={AddCourse} />
           {/* <Route path="/addcourse/" render={(props) => <EditCourse {...props}/>} /> */}
@@ -90,11 +93,14 @@ function App(props) {
  */}  
  < Route path="/editinfo" component={EditInfo} /> 
           < Route path="/admin" component={Admin} /> 
+          {/* <Route path="/admin" render={(props) => <Admin {...props}/>} /> */}
+
           {/* <PrivateRoute path="/admin" component={Admin} />  */}
 
         </div>
       </Router>
     </AuthContext.Provider>
+    
   );
         
 }

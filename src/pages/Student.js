@@ -29,6 +29,7 @@ this.setState({
   
     }
     render() {
+
         return (
             <div>
  <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('thequiz')}}>Take quiz</button>

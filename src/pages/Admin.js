@@ -1,25 +1,28 @@
 import React , { useState }from "react";
 import { Button } from "../components/AuthForms";
 import { useAuth } from "../context/auth";
-import { BrowserRouter as Redirect } from "react-router-dom";
+import { BrowserRouter as Redirect , withRouter} from "react-router-dom";
 
 
-function Admin(props) {
+function Admin( ) {
   const [logedOut ,setLogedOut] = useState(false)
   const { setAuthTokens } = useAuth();
 
-  function logOut() {
+  function logOut( ) {
     setAuthTokens();
     // localStorage.removeItem("token")
-    window.localStorage.clear();
-    setLogedOut(true)
+    localStorage.clear("token");
+    // this.props.history.push("/")
+   
    
   }
-  if(logedOut){
-   return  <Redirect to="/login"></Redirect>
-  }
+  // setLogedOut(true)
+  // if(logedOut){
+  //  return  <Redirect to="/login"></Redirect>
+  // }
 
   return (
+    
     <div id="Admin">
       
       <Button onClick={logOut}>Log out</Button>
@@ -28,4 +31,4 @@ function Admin(props) {
   );
 }
 
-export default Admin;
+export default  Admin;
