@@ -2,15 +2,19 @@ import React, { Component } from 'react';
  import { Card, Logo, Form, Button , Input } from '../components/AuthForms';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import FileBase from 'react-file-base64';
+
+const API_URL = "http://localhost:7000";
 
 
 
 class EditInfo extends Component {
+    
     constructor(){
         super()
         this.state = {
-            username1: "l"
-            // id: ''
+            username1: "l",
+            baseImage: "DefaultImg"
         }
     }
     // componentDidMount(){
@@ -34,14 +38,26 @@ class EditInfo extends Component {
             const id = user.user._id
             const name = this.state.username1
        axios.put(`http://localhost:7000/users/${id}`,{
-           username:  name} ).then((res)=>{
+           username:  this.state.username1,
+        img: this.state.baseImage} ).then((res)=>{
         console.log(res)       
         })
   
           }
       
 
-  
+          getBaseFile(files) {
+            // create a local readable base64 instance of an image
+            this.setState({
+              baseImage: files.base64.toString()
+            });
+        
+            // let imageObj = {
+            //    img: files.base64.toString()
+            // };
+         
+          }
+        
     render() {
         return (
             <div class="modify">
@@ -57,6 +73,9 @@ class EditInfo extends Component {
           onChange={this.handleChangeName}
           placeholder="User Name"
         />
+         <div className="process__upload-btn">
+              <FileBase type="file" multiple={false} onDone={this.getBaseFile.bind(this)} />
+            </div>
          
         <Button onClick={this.updatInfo}>Update profile</Button>
       </Form>

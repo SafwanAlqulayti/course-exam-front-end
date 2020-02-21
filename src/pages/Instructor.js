@@ -13,7 +13,8 @@ class Instructor extends Component {
         super()
         this.state={
             id: "",
-            arr: []
+            arr: [] ,
+            name: "s"
            
 
         }
@@ -27,15 +28,17 @@ class Instructor extends Component {
    const user =jwt_decode(x)
     
     var id = user.user._id
-    
-    console.log("eeees")
+    console.log("(user.user.userName")
+
+    console.log(user.user.username)
     console.log(this.state.id)
     axios.get(`http://localhost:7000/users/${id}`)
     .then(res=>{
          
    console.log(res.data.courses)  
 this.setState({
-arr: res.data.courses
+arr: res.data.courses ,
+name:res.data.username
 })  
 })
 }
@@ -66,6 +69,7 @@ addCourse=()=>{
           </ul>
           
           </nav> */}
+          {this.state.name}<br></br>
           <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('addcourse')}}>Add Course</button>
           <button  type="button" class="btn btn-primary" onClick={()=>{ this.props.history.push('editinfo')}}>Edit profile </button>
 

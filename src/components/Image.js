@@ -166,7 +166,7 @@ class Image extends Component {
             <div className="process__upload-btn">
               <FileBase type="file" multiple={false} onDone={this.getBaseFile.bind(this)} />
             </div>
-            <img src={this.state.baseImage} alt="upload-image" className="process__image" />
+            {/* <img src={this.state.baseImage} alt="upload-image" className="process__image" /> */}
           </div> 
          
         </div>
