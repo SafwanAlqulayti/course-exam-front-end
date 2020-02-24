@@ -17,10 +17,11 @@ function Login() {
       username:userName,
       password:password
     }).then(result => {
-      if (result.status === 200) {
+      if (true) {
         setAuthTokens(result.data.token);
         // console.log(result)
         setLoggedIn(true);
+        console.log(isLoggedIn)
       } else {
         setIsError(true);
       }
