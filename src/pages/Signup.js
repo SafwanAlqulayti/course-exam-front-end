@@ -23,8 +23,8 @@ function Signup () {
         username: userName,
         email: email ,
         password: password ,
-        role: role,
-        isLoggedIn : false
+        role: role
+       
         
      }).then(result => {
         if (result.status === 200) {  
@@ -32,7 +32,7 @@ function Signup () {
           setAuthTokens(result.data);
           console.log(result.data)
           setLoggedIn(true);
-          this.props.history.push('/login')
+          this.props.history.push('/')
 
          } else {
           setIsError(true);
@@ -40,11 +40,9 @@ function Signup () {
       }).catch(e => {
         setIsError(true);
       });
+
     }
-  
-    // if (isLoggedIn) {
-    //   return <Redirect to="/login" />;
-    // }
+   
   
     
   
