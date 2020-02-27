@@ -5,13 +5,14 @@ import { Card, Logo, Form, Button , Select,Option,Error } from '../components/Au
 import axios from 'axios';
 import { useAuth } from "../context/auth";
 import { Label , Input } from 'reactstrap';
- 
+import { useAlert } from 'react-alert'
+
 function Signup () {
-    const [isLoggedIn, setLoggedIn] = useState(false);
+     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
-
+    const [Rigisterd , setRigsterd] =useState(false)
     const [password, setPassword] = useState("");
  
     const [role, setRole] = useState("instructor");
@@ -26,26 +27,32 @@ function Signup () {
         role: role
        
         
-     }).then(result => {
-        if (result.status === 200) {  
-          result.preventDefault()
-          setAuthTokens(result.data);
-          console.log(result.data)
-          setLoggedIn(true);
-          this.props.history.push('/')
+     }).then((result)  => {
+     
+ //  result.preventDefault()
+//  setAuthTokens(result.data);
+//  console.log(result.data)
+  
+//   setLoggedIn(true);
+ 
+if(result.data !== "the email is exist"){
+setLoggedIn(true)       
+} else{
+  setIsError(true)
+}
 
-         } else {
-          setIsError(true);
-        }
+
       }).catch(e => {
         setIsError(true);
+ 
       });
 
     }
+    if (isLoggedIn) {
+      return <Redirect to="/login" />;
+    }
+ 
    
-  
-    
-  
   return (
     <Card id="SignUpCard">
       <Logo src={logoImg} />
@@ -56,7 +63,7 @@ function Signup () {
           onChange={e => {
             setUserName(e.target.value);
             console.log(userName)
-          }}
+           }}
           placeholder="userName"/>
           <Input  
         type="email"
@@ -82,7 +89,8 @@ function Signup () {
          
         <Button onClick={postSingUp}>Sign Up</Button>
       </Form>
-      {/* { isError &&<Error>Sign up did not complete</Error> } */}
+      { isError &&<Error>Sign up did not complete</Error> }
+      {/* { Rigisterd && <Error>Sign jjjjjj complete</Error> } */}
 
       <Link to="/login">Already have an account?</Link>
     </Card>

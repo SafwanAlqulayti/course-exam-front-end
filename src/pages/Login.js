@@ -23,7 +23,7 @@ function Login() {
         setLoggedIn(true);
         console.log(isLoggedIn)
       } else {
-        setIsError(true);
+        // setIsError(true);
       }
     }).catch(e => {
       setIsError(true);
