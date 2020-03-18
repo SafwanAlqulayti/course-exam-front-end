@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
  import { Card, Logo, Form, Button , Input } from '../components/AuthForms';
+ 
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import FileBase from 'react-file-base64';
+import { thisExpression } from '@babel/types';
 
 const API_URL = "http://localhost:7000";
 
@@ -17,15 +19,26 @@ class EditInfo extends Component {
             baseImage: "DefaultImg"
         }
     }
-    // componentDidMount(){
-    //     const  x = localStorage.getItem('tokens') ;
-    //     const user =jwt_decode(x)
-    //     const id = user.user._id
-    //     this.setState({
-    //         id: user.user._id ,
-    //         username: user.user.username
-    //     })
-    // }
+    UNSAFE_componentWillMount(){
+        // const  x = localStorage.getItem('tokens') ;
+        // const user =jwt_decode(x)
+        // const id = user.user._id
+        // this.setState({
+        //     id: user.user._id ,
+        //     username: user.user.username
+        // })
+        const  x = localStorage.getItem('tokens') ;
+        const user =jwt_decode(x)
+        const id = user.user._id
+        axios.get(`http://localhost:7000/users/${id}`)
+        .then((result)=>{
+          console.log(result.data.username)
+          console.log("test get")
+          this.setState({
+            username: result.data.username
+          })
+        })
+    }
     handleChangeName=e=>{
         this.setState({
             username1:    e.target.value
@@ -44,6 +57,17 @@ class EditInfo extends Component {
         })
   
           }
+          getUserInfo=()=>{
+            const  x = localStorage.getItem('tokens') ;
+            const user =jwt_decode(x)
+            const id = user.user._id
+            axios.get(`http://localhost:7000/users/${id}`)
+            .then((result)=>{
+              this.setState({
+                username: result.username
+              })
+            })
+          }
       
 
           getBaseFile(files) {
@@ -57,19 +81,22 @@ class EditInfo extends Component {
             // };
          
           }
+          
         
     render() {
         return (
-            <div class="modify">
-                <h1>My info</h1>
-                <Card id="SignUpCard">
-     
+    
+               
+      
+                     <div class="modify">
+                  <Card id="SignUpCard">
+                <h1 >My info</h1>
       <Form>
       <span>current user name :          {this.state.username}</span>
 
 
       <Input
-         type="courseName"
+         type="userName"
           onChange={this.handleChangeName}
           placeholder="User Name"
         />
@@ -79,8 +106,12 @@ class EditInfo extends Component {
          
         <Button onClick={this.updatInfo}>Update profile</Button>
       </Form>
-      </Card>
-            </div>
+      </Card> 
+ </div>
+ 
+ 
+
+ 
         );
     }
 }

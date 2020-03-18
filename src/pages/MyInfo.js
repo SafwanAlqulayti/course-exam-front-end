@@ -22,7 +22,7 @@ class MyInfo extends Component {
     
     UNSAFE_componentWillMount() {
   
-          
+          console.log("Test my info")
         const  x = localStorage.getItem('tokens') ;
         console.log(x)
    const user =jwt_decode(x)

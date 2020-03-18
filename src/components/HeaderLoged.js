@@ -2,6 +2,10 @@ import React, { Component } from 'react';
  import { BrowserRouter as Router, Link, Route ,Redirect} from "react-router-dom";
  
 class HeaderLoged extends Component {
+  signOut=()=>{
+    localStorage.clear("token");
+
+  }
     render() {
         return (
             <div>
@@ -55,7 +59,7 @@ class HeaderLoged extends Component {
         </li>
       </ul>
       
-      <Link to="/admin"  class="ticket"><span >Sign Out </span></Link>       
+      <Link to="/login"  class="ticket" onClick={this.signOut}><span >Sign Out </span></Link>       
         
  
       </div>

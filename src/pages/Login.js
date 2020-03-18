@@ -16,14 +16,14 @@ function Login() {
     axios.post("http://localhost:7000/users/login", {
       username:userName,
       password:password
-    }).then(result => {
+    }).then((result) => {
       if (true) {
         setAuthTokens(result.data.token);
         // console.log(result)
         setLoggedIn(true);
         console.log(isLoggedIn)
       } else {
-        // setIsError(true);
+        setIsError(true);
       }
     }).catch(e => {
       setIsError(true);

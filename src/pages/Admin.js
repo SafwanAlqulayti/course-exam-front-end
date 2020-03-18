@@ -9,7 +9,7 @@ function Admin( ) {
   const { setAuthTokens } = useAuth();
 
   function logOut( ) {
-    setAuthTokens();
+    // setAuthTokens(); // comment new was test
     // localStorage.removeItem("token")
     localStorage.clear("token");
     // this.props.history.push("/")
