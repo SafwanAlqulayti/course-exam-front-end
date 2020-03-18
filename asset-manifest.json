@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/my-app/static/css/main.ade02319.chunk.css",
-    "main.js": "/my-app/static/js/main.ab804359.chunk.js",
-    "main.js.map": "/my-app/static/js/main.ab804359.chunk.js.map",
-    "runtime-main.js": "/my-app/static/js/runtime-main.2d8e6340.js",
-    "runtime-main.js.map": "/my-app/static/js/runtime-main.2d8e6340.js.map",
-    "static/css/2.47e06e2e.chunk.css": "/my-app/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.a29d6c5a.chunk.js": "/my-app/static/js/2.a29d6c5a.chunk.js",
-    "static/js/2.a29d6c5a.chunk.js.map": "/my-app/static/js/2.a29d6c5a.chunk.js.map",
-    "index.html": "/my-app/index.html",
-    "precache-manifest.427d86b8c4ede3537b9182738e5c2f28.js": "/my-app/precache-manifest.427d86b8c4ede3537b9182738e5c2f28.js",
-    "service-worker.js": "/my-app/service-worker.js",
-    "static/css/2.47e06e2e.chunk.css.map": "/my-app/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.ade02319.chunk.css.map": "/my-app/static/css/main.ade02319.chunk.css.map",
-    "static/js/2.a29d6c5a.chunk.js.LICENSE": "/my-app/static/js/2.a29d6c5a.chunk.js.LICENSE",
-    "static/media/logo.jpg": "/my-app/static/media/logo.46aaeee7.jpg"
+    "main.css": "/course-exam-front-end/static/css/main.ade02319.chunk.css",
+    "main.js": "/course-exam-front-end/static/js/main.05641724.chunk.js",
+    "main.js.map": "/course-exam-front-end/static/js/main.05641724.chunk.js.map",
+    "runtime-main.js": "/course-exam-front-end/static/js/runtime-main.dc63af88.js",
+    "runtime-main.js.map": "/course-exam-front-end/static/js/runtime-main.dc63af88.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/course-exam-front-end/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.6ea140e2.chunk.js": "/course-exam-front-end/static/js/2.6ea140e2.chunk.js",
+    "static/js/2.6ea140e2.chunk.js.map": "/course-exam-front-end/static/js/2.6ea140e2.chunk.js.map",
+    "index.html": "/course-exam-front-end/index.html",
+    "precache-manifest.6d88cb8292ade7d161e0a3af14f6c9c4.js": "/course-exam-front-end/precache-manifest.6d88cb8292ade7d161e0a3af14f6c9c4.js",
+    "service-worker.js": "/course-exam-front-end/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/course-exam-front-end/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.ade02319.chunk.css.map": "/course-exam-front-end/static/css/main.ade02319.chunk.css.map",
+    "static/js/2.6ea140e2.chunk.js.LICENSE": "/course-exam-front-end/static/js/2.6ea140e2.chunk.js.LICENSE",
+    "static/media/logo.jpg": "/course-exam-front-end/static/media/logo.46aaeee7.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d8e6340.js",
+    "static/js/runtime-main.dc63af88.js",
     "static/css/2.47e06e2e.chunk.css",
-    "static/js/2.a29d6c5a.chunk.js",
+    "static/js/2.6ea140e2.chunk.js",
     "static/css/main.ade02319.chunk.css",
-    "static/js/main.ab804359.chunk.js"
+    "static/js/main.05641724.chunk.js"
   ]
 }
