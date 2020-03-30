@@ -20,7 +20,7 @@ function Signup () {
     const { setAuthTokens } = useAuth();
 
      function  postSingUp   (){
-         axios.post('https://glacial-refuge-44399.herokuapp.com/users',{
+         axios.post('https://cors-anywhere.herokuapp.com/https://glacial-refuge-44399.herokuapp.com/users',{
         username: userName,
         email: email ,
         password: password ,
