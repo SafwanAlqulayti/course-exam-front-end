@@ -20,7 +20,7 @@ function Signup () {
     const { setAuthTokens } = useAuth();
 
      function  postSingUp   (){
-         axios.post('https://glacial-refuge-44399.herokuapp.com/users',{
+         axios.post('http://localhost:7000/users',{
         username: userName,
         email: email ,
         password: password ,

@@ -13,7 +13,7 @@ function Login() {
   const { setAuthTokens } = useAuth();
 
   function postLogin() {
-    axios.post("http://localhost:7000/users/login", {
+    axios.post("https://cors-anywhere.herokuapp.com/https://glacial-refuge-44399.herokuapp.com/users/login", {
       username:userName,
       password:password
     }).then((result) => {
