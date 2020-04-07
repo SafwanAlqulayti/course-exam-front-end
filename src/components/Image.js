@@ -5,7 +5,7 @@ import { storage } from '../firebase-config';
 import DefaultImg from '../assets/default-img.jpg';
 
 // base api url being used
-const API_URL = "http://localhost:7000";
+const API_URL = "https://course-exam.herokuapp.com";
 
 class Image extends Component {
   constructor(props) {
@@ -128,7 +128,7 @@ class Image extends Component {
       });
   }
   getImage=()=>{
-    axios.get('http://localhost:7000/image/5e4f1d4e187ed82b6c2552cf').then((res)=>{
+    axios.get('https://course-exam.herokuapp.com/image/5e4f1d4e187ed82b6c2552cf').then((res)=>{
       console.log(res.data.imageData)
       this.setState({
         Image: res.data.imageData
