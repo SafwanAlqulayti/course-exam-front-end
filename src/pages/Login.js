@@ -13,7 +13,7 @@ function Login() {
   const { setAuthTokens } = useAuth();
 
   function postLogin() {
-    axios.post("https://course-exam.herokuapp.com/users/login", {
+    axios.post("https://cors-anywhere.herokuapp.com/https://course-exam.herokuapp.com/users/login", {
       username:userName,
       password:password
     }).then((result) => {
