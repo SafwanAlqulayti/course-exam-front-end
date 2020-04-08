@@ -16,7 +16,7 @@ class editCourse extends Component {
     }
  
     editCourse(){
-        axios.put(`http://localhost:7000/courses/${this.props.match.params.id}`,
+        axios.put(`https://course-exam.herokuapp.com/courses/${this.props.match.params.id}`,
         {name: this.state.name ,category: this.state.category })
     
     .then(   res=>{

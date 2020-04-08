@@ -9,7 +9,7 @@ class AllCourses extends Component {
         }
     }
     componentDidMount(){
-    axios.get("http://localhost:7000/courses")
+    axios.get("https://course-exam.herokuapp.com/courses")
     .then(res=>{
         
       this.setState({arr:res.data})

@@ -26,7 +26,6 @@ function Signup () {
         password: password ,
         role: role
        
-        
      }).then((result)  => {
      
  //  result.preventDefault()

@@ -16,7 +16,7 @@ function postCourse(){
   var x =localStorage.getItem("tokens")
   const user =jwt_decode(x)
   var id = user.user._id
- axios.post(`http://localhost:7000/courses/${id}`,{
+ axios.post(`https://course-exam.herokuapp.com/courses/${id}`,{
      name: courseName ,
      category: courseCategory
  }).then(result=>{

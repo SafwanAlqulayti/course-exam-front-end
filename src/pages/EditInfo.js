@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode';
 import FileBase from 'react-file-base64';
 import { thisExpression } from '@babel/types';
 
-const API_URL = "http://localhost:7000";
+const API_URL = "https://course-exam.herokuapp.com";
 
 
 
@@ -30,7 +30,7 @@ class EditInfo extends Component {
         const  x = localStorage.getItem('tokens') ;
         const user =jwt_decode(x)
         const id = user.user._id
-        axios.get(`http://localhost:7000/users/${id}`)
+        axios.get(`https://course-exam.herokuapp.com/users/${id}`)
         .then((result)=>{
           console.log(result.data.username)
           console.log("test get")
@@ -50,7 +50,7 @@ class EditInfo extends Component {
             const user =jwt_decode(x)
             const id = user.user._id
             const name = this.state.username1
-       axios.put(`http://localhost:7000/users/${id}`,{
+       axios.put(`https://course-exam.herokuapp.com/users/${id}`,{
            username:  this.state.username1,
         img: this.state.baseImage} ).then((res)=>{
         console.log(res)       
@@ -61,7 +61,7 @@ class EditInfo extends Component {
             const  x = localStorage.getItem('tokens') ;
             const user =jwt_decode(x)
             const id = user.user._id
-            axios.get(`http://localhost:7000/users/${id}`)
+            axios.get(`https://course-exam.herokuapp.com/users/${id}`)
             .then((result)=>{
               this.setState({
                 username: result.username

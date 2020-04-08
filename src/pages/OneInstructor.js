@@ -14,7 +14,7 @@ class OneInstructor extends Component {
         this.joinCourse = this.joinCourse.bind()
     }
     componentWillMount(){
-        axios.get(`http://localhost:7000/users/${this.props.match.params.id}`)
+        axios.get(`https://course-exam.herokuapp.com/users/${this.props.match.params.id}`)
         .then((res)=>{
             console.log(res)
             this.setState({
@@ -37,7 +37,7 @@ class OneInstructor extends Component {
    var id = user.user._id
    console.log(id)
    
-    axios.put(`http://localhost:7000/users/${id}/${courseId}`,{
+    axios.put(`https://course-exam.herokuapp.com/users/${id}/${courseId}`,{
         courses: "k"})
    .then((res)=>{
        console.log('saved',res )

@@ -18,7 +18,7 @@ class Student extends Component {
     const id = user.user._id
   
        console.log(this.state.id)
-axios.get(`http://localhost:7000/users/${id}`)
+axios.get(`https://course-exam.herokuapp.com/users/${id}`)
 .then(res=>{
      
 console.log(res.data.courses)  

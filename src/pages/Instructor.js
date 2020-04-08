@@ -32,7 +32,7 @@ class Instructor extends Component {
 
     console.log(user.user.username)
     console.log(this.state.id)
-    axios.get(`http://localhost:7000/users/${id}`)
+    axios.get(`https://course-exam.herokuapp.com/users/${id}`)
     .then(res=>{
          
    console.log(res.data.courses)  
@@ -43,7 +43,7 @@ name:res.data.username
 })
 }
 deleteCourse(e){
- axios.delete(`http://localhost:7000/courses/${e}`).then(res=>{
+ axios.delete(`https://course-exam.herokuapp.com/courses/${e}`).then(res=>{
 console.log(res)
  })
 }
