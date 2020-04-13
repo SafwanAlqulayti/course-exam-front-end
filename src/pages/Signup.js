@@ -20,7 +20,7 @@ function Signup () {
     const { setAuthTokens } = useAuth();
 
      function  postSingUp   (){
-         axios.post('https://course-exam.herokuapp.com/users',{
+         axios.post('https://cors-anywhere.herokuapp.com/https://course-exam.herokuapp.com/users',{
         username: userName,
         email: email ,
         password: password ,
