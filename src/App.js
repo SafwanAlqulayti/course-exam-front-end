@@ -24,10 +24,10 @@ function App(props) {
   //   let token = localStorage.getItem("tokens");
   //   console.log(token)
   // })
-  const path = "course-exam-front-end"
+  const path1 = "/course-exam-front-end"
   const [authTokens, setAuthTokens] = useState();
   // const [ userId , setUserId] = useState("");
-  
+
   const setTokens = (data) => {
   console.log(data)
     if (data) {
@@ -71,11 +71,11 @@ function App(props) {
         </ul> */}
         {/* <MyInfo use rInfo={props.useID}/> */}
 <Header></Header>
-            <Route exact path= {path + "/"}     component={Home} />
-         <Route path= {path + "/login"} component={Login} />
+            <Route exact path= {path1+ "/" }    component={Home} />
+         <Route path= {path1 + "/login"} component={Login} />
             <Route path="/myinfo" component={MyInfo} />
             <Route path="/thequiz" component={TheQuiz} />
-          <Route path="/signup" component={Signup} />
+          <Route path={ path1 +"/signup"} component={Signup} />
           <Route path="/image" component={Image} />
 
           <Route path="/mycourses" component={Mycourses} />
